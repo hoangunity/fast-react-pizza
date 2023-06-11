@@ -11,6 +11,8 @@ import CreateOrder, {
 } from "./features/order/CreateOrder";
 import { action as updateOrderAction } from "./features/order/UpdateOrder";
 
+const BASE = "/fast-react-pizza";
+
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -18,19 +20,19 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       {
-        path: "/menu",
+        path: `${BASE}/menu`,
         element: <Menu />,
         loader: menuLoader,
         errorElement: <Error />,
       },
-      { path: "/cart", element: <Cart /> },
+      { path: `${BASE}/cart`, element: <Cart /> },
       {
-        path: "/order/new",
+        path: `${BASE}/order/new`,
         element: <CreateOrder />,
         action: createOrderAction,
       },
       {
-        path: "/order/:orderId",
+        path: `${BASE}/order/:orderId`,
         element: <Order />,
         loader: orderLoader,
         errorElement: <Error />,
